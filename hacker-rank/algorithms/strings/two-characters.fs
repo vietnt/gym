@@ -3,7 +3,7 @@
 let _ = System.Console.ReadLine()
 let s = System.Console.ReadLine()
 
-let cs = s |> Seq.distinct |> Seq.toArray
+let cs = s |> Seq.distinct |> Seq.toList
 
 let f (a, b) =    
     let r = s |> Seq.filter (fun c -> c = a || c = b)        
@@ -12,8 +12,12 @@ let f (a, b) =
         r |> Seq.length
     else 0    
 
-Seq.allPairs cs cs
-|> Seq.filter (fun (x,y) -> x > y)
-|> Seq.map f
-|> Seq.max
-|> printfn "%i"
+let ps = List.allPairs cs cs |> List.filter (fun (x,y) -> x > y)
+
+match ps with
+| [] -> printfn "0"
+| s ->
+    s
+    |> Seq.map f
+    |> Seq.max
+    |> printfn "%i"       
