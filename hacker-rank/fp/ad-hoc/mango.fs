@@ -4,10 +4,6 @@ open System
 
 let readArray() = Console.ReadLine().Split ' ' |> Array.map int64 
 
-let [| n; m |] = readArray()
-let a = readArray()
-let h = readArray()
-
 let g a m e = 
     e
     |> Seq.map (fun (a,b) -> a + (m - 1L)*b)
@@ -23,6 +19,9 @@ let rec f m a b s =
        if g m t s then f m t b s
        else f m a (t - 1L) s
         
+let [| n; m |] = readArray()
+let a = readArray()
+let h = readArray()        
 
 Seq.zip a h
 |> Seq.sortWith (fun (a,x) (b,y) -> compare x y)
