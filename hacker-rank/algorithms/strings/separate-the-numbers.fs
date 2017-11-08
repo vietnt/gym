@@ -7,8 +7,8 @@ let ts = [ for i in [1..n] -> Console.ReadLine()]
 
 let g o =
     let rec c i a =    
-        if i + 1 >= Array.Length a then true
-        elif String.Length a.[i] > 1 && a.[i].[0] = '0' then false
+        if i + 1 >= Array.length a then true
+        elif String.length a.[i] > 1 && a.[i].[0] = '0' then false
         else
             if int64 a.[i] + 1L <> int64 a.[i+1] then false
             else c (i+1) a
